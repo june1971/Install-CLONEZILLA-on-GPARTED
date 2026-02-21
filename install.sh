@@ -8,7 +8,7 @@
 # ================================
 
 # URL del tuo repository GitHub (modificalo!)
-REPO_URL="https://github.com/<tuo-username>/<tuo-repo>/raw/main"
+REPO_URL="https://github.com/june1971/Install-CLONEZILLA-on-GPARTED/tree/main"
 
 # Cartella temporanea
 WORKDIR="/tmp/clonezilla-install"
