@@ -7,24 +7,28 @@
 #  Avvia Clonezilla
 # ================================
 
-# URL del tuo repository GitHub (modificalo!)
-REPO_URL="https://raw.githubusercontent.com/june1971/Install-CLONEZILLA-on-GPARTED/main"
+REPO_USER="june1971"
+REPO_NAME="Install-CLONEZILLA-on-GPARTED"
+FOLDER="packages"
 
-# Cartella temporanea
 WORKDIR="/tmp/clonezilla-install"
-
-echo "Creazione cartella temporanea..."
 mkdir -p "$WORKDIR"
 cd "$WORKDIR" || exit 1
 
-echo "Scarico i file dal repository..."
-# Scarica tutti i .deb presenti nella cartella "packages" del repo
-wget -q "$REPO_URL/packages/"*".deb"
+echo "Scarico lista dei file .deb dal repository..."
+
+curl -s "https://api.github.com/repos/$REPO_USER/$REPO_NAME/contents/$FOLDER" \
+| grep "download_url" \
+| cut -d '"' -f 4 \
+| while read -r url; do
+    echo "Scarico $url"
+    wget -q "$url"
+done
 
 echo "Installazione pacchetti..."
 sudo dpkg -i *.deb
 
-echo "Correzione dipendenze mancanti..."
+echo "Correzione dipendenze..."
 sudo apt-get install -f -y
 
 echo "Avvio Clonezilla..."
