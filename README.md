@@ -1,7 +1,8 @@
-# Clonezilla su GParted
+# Clonezilla on GParted
 
-For install 
+For Install:
+
+```bash
 wget https://raw.githubusercontent.com/june1971/Install-CLONEZILLA-on-GPARTED/main/install.sh
-
 chmod +x install.sh
-./install.sh 
+./install.sh
