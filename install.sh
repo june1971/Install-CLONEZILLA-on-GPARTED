@@ -7,23 +7,23 @@
 #  Avvia Clonezilla
 # ================================
 
-REPO_USER="june1971"
-REPO_NAME="Install-CLONEZILLA-on-GPARTED"
-FOLDER="packages"
-
+BASE="https://raw.githubusercontent.com/june1971/Install-CLONEZILLA-on-GPARTED/main/packages"
 WORKDIR="/tmp/clonezilla-install"
+
 mkdir -p "$WORKDIR"
 cd "$WORKDIR" || exit 1
 
 echo "Scarico lista dei file .deb dal repository..."
-
-curl -s "https://api.github.com/repos/$REPO_USER/$REPO_NAME/contents/$FOLDER" \
-| grep "download_url" \
-| cut -d '"' -f 4 \
-| while read -r url; do
-    echo "Scarico $url"
-    wget -q "$url"
-done
+wget "$BASE/clonezilla_5.14.5-1_all.deb" 
+wget "$BASE/dialog_1.3-20260107-1_amd64.deb"
+wget "$BASE/drbl_5.7.12-1_all.deb"
+wget "$BASE/ipcalc_0.51-1_all.deb"
+wget "$BASE/jq_1.8.1-4+b1_amd64.deb"
+wget "$BASE/libdialog15_1.3-20260107-1_amd64.deb"
+wget "$BASE/libjq1_1.8.1-4+b1_amd64.deb"
+wget "$BASE/libonig5_6.9.10-1_amd64.deb"
+wget "$BASE/pixz_1.0.7-4_amd64.deb"
+wget "$BASE/sshfs_3.7.3-1.1+b2_amd64.deb" 
 
 echo "Installazione pacchetti..."
 sudo dpkg -i *.deb
