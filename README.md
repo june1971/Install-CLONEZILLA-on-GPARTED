@@ -24,4 +24,32 @@ Run the following commands inside GParted Live:
 wget https://raw.githubusercontent.com/june1971/Install-CLONEZILLA-on-GPARTED/main/install.sh
 sudo chmod +x install.sh
 sudo bash install.sh
+```
+
+The script will:
+
+Download all required .deb packages from the packages/ directory
+
+* Install them using dpkg -i
+* Fix missing dependencies
+* Launch Clonezilla automatically
+
+## Requirements
+* GParted Live environment
+* Internet connection
+* wget and dpkg (preinstalled in GParted Live)
+
+VPS or machine with at least:
+* 1 vCPU
+* 1 GB RAM
+* 10 GB disk
+
+## Notes
+This method is intended for VPS environments where Clonezilla Live cannot boot due to resource limitations.
+The installation is temporary: GParted Live runs in RAM, so changes are lost after reboot unless persistence is configured.
+The repository must remain public for wget to download the installation script.
+
+## License
+This project is provided as‑is for educational and operational use.
+You may modify or redistribute it according to your needs.
 
